@@ -8,3 +8,11 @@ eureka:
 spring:
   application:
     name: order-service
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000

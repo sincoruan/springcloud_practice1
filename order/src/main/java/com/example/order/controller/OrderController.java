@@ -3,6 +3,7 @@ package com.example.order.controller;
 import com.example.order.entity.User;
 import com.example.order.feign.ProductFeignClient;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -43,14 +44,27 @@ public class OrderController {
      * @param id
      * @return
      *  */
+    @HystrixCommand(fallbackMethod="userFallBack")
     @RequestMapping("/buy/{id}")
     public User order(@PathVariable("id") int id){
         //XXOO 如何从一个微服务去调用另外一个微服务
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         User result = restTemplate.getForObject(
                 "http://product-service/product/"+id,
                 User.class);
         return result;
     }
+
+    public User userFallBack(int id){
+        User user  = new User();
+        user.setName("触发降级方法");
+        return user;
+    }
+
 
 /*
     @Autowired
