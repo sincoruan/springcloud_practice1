@@ -16,8 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-//    @Autowired
-//    RestTemplate restTemplate;
+    @Autowired
+    RestTemplate restTemplate;
 
     @Autowired
     DiscoveryClient discoveryClient;
@@ -42,16 +42,17 @@ public class OrderController {
      * 基于Ribbon调用
      * @param id
      * @return
+     *  */
     @RequestMapping("/buy/{id}")
-    public String order(@PathVariable("id") int id){
+    public User order(@PathVariable("id") int id){
         //XXOO 如何从一个微服务去调用另外一个微服务
-        String result = restTemplate.getForObject(
+        User result = restTemplate.getForObject(
                 "http://product-service/product/"+id,
-                String.class);
+                User.class);
         return result;
     }
-     */
 
+/*
     @Autowired
     ProductFeignClient productFeignClient;
 
@@ -62,5 +63,5 @@ public class OrderController {
 
         return result;
     }
-
+*/
 }

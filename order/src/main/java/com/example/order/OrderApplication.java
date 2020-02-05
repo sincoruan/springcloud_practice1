@@ -13,15 +13,15 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients
+//@EnableFeignClients
 public class OrderApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(OrderApplication.class, args);
     }
-//    @LoadBalanced
-//    @Bean
-//    public RestTemplate getRestTemplate(){
-//        return new RestTemplate();
-//    }
+    @LoadBalanced
+    @Bean
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
 }
