@@ -1,19 +1,15 @@
 package com.example.order.controller;
 
 import com.example.order.entity.User;
-import com.example.order.feign.ProductFeignClient;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import com.example.storage.feign.ProductFeignClient;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/order")

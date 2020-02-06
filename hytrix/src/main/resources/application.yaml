@@ -1,0 +1,15 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: hystrix-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka/,http://127.0.0.1:8080/eureka/
+
+turbine:
+  appConfig: storage-service
+  clusterNameExpression: "'default'"

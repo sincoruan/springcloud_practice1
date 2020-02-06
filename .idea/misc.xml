@@ -6,6 +6,8 @@
         <option value="$PROJECT_DIR$/ereka/pom.xml" />
         <option value="$PROJECT_DIR$/product/pom.xml" />
         <option value="$PROJECT_DIR$/order/pom.xml" />
+        <option value="$PROJECT_DIR$/storage/pom.xml" />
+        <option value="$PROJECT_DIR$/hytrix/pom.xml" />
       </list>
     </option>
   </component>
